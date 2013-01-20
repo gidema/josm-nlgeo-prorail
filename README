@@ -1,0 +1,9 @@
+nlgeo_prorail
+=================
+
+Josm (Java Openstreetmap editor) Plugin for Prorail data.
+Prorail is responsible for dutch railway infrastructure and provides a service layer
+with GIS data about rail objects.   
+Uses the openservices plugin.
+
+See http://www.prorail.nl

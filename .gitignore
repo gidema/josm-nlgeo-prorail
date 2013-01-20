@@ -1,0 +1,7 @@
+# target directory #
+target
+build
+dist
+
+# backup files #
+*~
