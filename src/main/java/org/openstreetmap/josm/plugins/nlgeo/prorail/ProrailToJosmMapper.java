@@ -19,7 +19,7 @@ import com.vividsolutions.jts.geom.MultiLineString;
 import com.vividsolutions.jts.geom.Point;
 import com.vividsolutions.jts.geom.Polygon;
 
-public class ProrailToJosmMapper implements ObjectToJosmMapper<ProrailObject> {
+public class ProrailToJosmMapper implements ObjectToJosmMapper {
   private final JosmObjectFactory objectFactory;
 
   public ProrailToJosmMapper(DataSet dataSet) {
@@ -27,7 +27,7 @@ public class ProrailToJosmMapper implements ObjectToJosmMapper<ProrailObject> {
   }
   
   @Override
-  public void create(ProrailObject prorailObject) {
+  public void create(Object prorailObject) {
     if (prorailObject instanceof Spoor) {
       createSpoor((Spoor)prorailObject);
       return;
@@ -44,7 +44,7 @@ public class ProrailToJosmMapper implements ObjectToJosmMapper<ProrailObject> {
       createKunstwerk((Kunstwerk)prorailObject);
       return;
     }
-    return;
+    throw new IllegalArgumentException("Unexpected object type");
   }
   
   private void createSpoor(Spoor spoor) {
