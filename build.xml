@@ -102,7 +102,7 @@
 				<attribute name="Plugin-Description" value="Plugin to access Prorail (dutch rail) data" />
 				<attribute name="Plugin-Icon" value="images/rail.png" />
 				<attribute name="Plugin-Mainversion" value="${plugin.main.version}" />
-				<attribute name="Plugin-Version" value="0.1.1" />
+				<attribute name="Plugin-Version" value="0.1.2" />
 				<attribute name="Plugin-Requires" value="openservices" />
 				<attribute name="Class-Path" value="lib/" />
 			</manifest>
