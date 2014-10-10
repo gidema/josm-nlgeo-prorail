@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<project name="ods_prorail"  default="dist" basedir="." 
+<project name="ods-prorail"  default="dist" basedir="." 
   xmlns:artifact="antlib:org.apache.maven.artifact.ant">
   <artifact:pom id="mypom" file="pom.xml" />
+
+	<!-- enter the SVN commit message -->
+  <property name="commit.message" value="Commit message" />
+  <!-- enter the *lowest* JOSM version this plugin is currently compatible with -->
+  <property name="plugin.main.version" value="7588" />
+  <property name="plugin.class" value="org.openstreetmap.josm.plugins.ods.prorail.ProrailImportPlugin"/>
+  <property name="plugin.version" value="${mypom.version}" />
 	<property name="plugin.build.dir" value="build" />
 	<property name="plugin.src.dir" value="src" />
 	<!-- this is the directory where the plugin jar is copied to -->
@@ -30,9 +37,18 @@
     	<fileset dir="${maven.target.dir}/classes"/>
     </copy>
 		<jar destfile="${plugin.jar}" basedir="${plugin.build.dir}">
-			<manifest>
-				<attribute name="Author" value="Gertjan Idema &lt;mail@gertjanidema.nl&gt;" />
-			</manifest>
+      <manifest>
+        <attribute name="Author" value="Gertjan Idema &lt;mail@gertjanidema.nl&gt;"/>
+        <attribute name="Plugin-Class" value="${plugin.class}"/>
+        <attribute name="Plugin-Date" value="${time}"/>
+        <attribute name="Plugin-Description" value="Import rail data in The Netherlands from the Prorail Rest service"/>
+        <attribute name="Plugin-Icon" value="images/wfs.png"/>
+        <!--<attribute name="Plugin-Link" value="http://fixme.com"/>-->
+        <attribute name="Plugin-Mainversion" value="${plugin.main.version}"/>
+        <attribute name="Plugin-Version" value="${plugin.version}"/>
+        <attribute name="Plugin-Requires" value="opendataservices"/>
+        <attribute name="Plugin-Stage" value="45"/>
+      </manifest>
 		</jar>
 	</target>
 	<!--
@@ -56,7 +72,7 @@
 				<os family="windows" />
 			</and>
 		</condition>
-		<copy file="${plugin.jar}" todir="${josm.plugins.dir}/opendataservices" />
+		<copy file="${plugin.jar}" todir="${josm.plugins.dir}" />
 	</target>
 	
   <!--
@@ -71,6 +87,6 @@
          <os family="windows"/>
        </and>
      </condition>
-     <copy file="${plugin.jar}" todir="${josm.plugins.dir}/opendataservices"/>
+     <copy file="${plugin.jar}" todir="${josm.plugins.dir}"/>
   </target>
 </project>
