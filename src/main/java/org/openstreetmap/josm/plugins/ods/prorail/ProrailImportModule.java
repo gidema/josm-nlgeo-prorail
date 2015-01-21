@@ -39,7 +39,7 @@ public class ProrailImportModule extends OdsModule {
 
     @Override
     public boolean usePolygonFile() {
-        return true;
+        return false;
     }
 
     @Override

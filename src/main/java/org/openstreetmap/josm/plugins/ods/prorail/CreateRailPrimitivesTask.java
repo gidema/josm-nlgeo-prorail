@@ -1,5 +1,6 @@
 package org.openstreetmap.josm.plugins.ods.prorail;
 
+import org.openstreetmap.josm.plugins.ods.Context;
 import org.openstreetmap.josm.plugins.ods.PrimitiveBuilder;
 import org.openstreetmap.josm.plugins.ods.tasks.Task;
 
@@ -22,9 +23,9 @@ public class CreateRailPrimitivesTask implements Task {
 
 
     @Override
-    public void run() {
+    public void run(Context ctx) {
         for (Rail rail : railStore) {
-            primitiveBuilder.createPrimitives(rail);
+            primitiveBuilder.createPrimitive(rail);
         }
     }
 
