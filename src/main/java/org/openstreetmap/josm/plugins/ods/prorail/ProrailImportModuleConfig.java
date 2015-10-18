@@ -26,6 +26,7 @@ import org.openstreetmap.josm.plugins.ods.prorail.gt.build.ProrailGtRailBuilder;
 import org.openstreetmap.josm.plugins.ods.prorail.osm.build.ProrailRailPrimitiveBuilder;
 import org.openstreetmap.josm.plugins.ods.tasks.Task;
 
+@Deprecated
 public class ProrailImportModuleConfig {
     private final OdsModulePlugin plugin;
     private final AGRestHost host;
@@ -33,7 +34,7 @@ public class ProrailImportModuleConfig {
     private final InternalDataLayer internalDataLayer;
     private final ExternalDataLayer externalDataLayer;
     
-    private final GtRailStore gtRailStore = new GtRailStore();
+    private final ODRailStore gtRailStore = new ODRailStore();
     
     public ProrailImportModuleConfig(OdsModulePlugin plugin) {
         this.plugin = plugin;

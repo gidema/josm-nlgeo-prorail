@@ -14,7 +14,7 @@ public class ProrailImportPlugin extends OdsModulePlugin {
     @Override
     public OdsModule getModule() {
         if (module == null) {
-            module = new ProrailImportModuleConfig(this).getModule();
+            module = new ProrailImportModule(this);
         }
         return module;
     }

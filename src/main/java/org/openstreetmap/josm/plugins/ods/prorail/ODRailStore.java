@@ -2,6 +2,7 @@ package org.openstreetmap.josm.plugins.ods.prorail;
 
 import org.openstreetmap.josm.plugins.ods.entities.EntityStore;
 import org.openstreetmap.josm.plugins.ods.entities.GeoIndex;
+import org.openstreetmap.josm.plugins.ods.entities.Index;
 import org.openstreetmap.josm.plugins.ods.entities.UniqueIndexImpl;
 
 /**
@@ -12,13 +13,20 @@ import org.openstreetmap.josm.plugins.ods.entities.UniqueIndexImpl;
  * @author Gertjan Idema <mail@gertjanidema.nl>
  *
  */
-public class GtRailStore extends EntityStore<Rail> {
+public class ODRailStore extends EntityStore<Rail> {
     private UniqueIndexImpl<Rail> idIndex = new UniqueIndexImpl<>(Rail.class, "referenceId");
 
-    public GtRailStore() {
+    public ODRailStore() {
         super();
         getIndexes().add(idIndex);
     }
+
+
+    @Override
+    public Index<Rail> getIdIndex() {
+        return idIndex;
+    }
+
 
     @Override
     public UniqueIndexImpl<Rail> getPrimaryIndex() {
