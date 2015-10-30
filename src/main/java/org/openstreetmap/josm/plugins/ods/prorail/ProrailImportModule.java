@@ -5,8 +5,8 @@ import org.openstreetmap.josm.plugins.ods.OdsModule;
 import org.openstreetmap.josm.plugins.ods.OdsModulePlugin;
 import org.openstreetmap.josm.plugins.ods.crs.CRSUtil;
 import org.openstreetmap.josm.plugins.ods.crs.CRSUtilProj4j;
-import org.openstreetmap.josm.plugins.ods.entities.external.ExternalDataLayer;
-import org.openstreetmap.josm.plugins.ods.entities.internal.InternalDataLayer;
+import org.openstreetmap.josm.plugins.ods.entities.opendata.OpenDataLayerManager;
+import org.openstreetmap.josm.plugins.ods.entities.osm.OsmLayerManager;
 import org.openstreetmap.josm.plugins.ods.gui.OdsDownloadAction;
 import org.openstreetmap.josm.plugins.ods.io.MainDownloader;
 import org.openstreetmap.josm.plugins.ods.jts.GeoUtil;
@@ -20,7 +20,7 @@ public class ProrailImportModule extends OdsModule {
     private ODRailStore railStore = new ODRailStore();
 
     public ProrailImportModule(OdsModulePlugin plugin) {
-        super(plugin, new ExternalDataLayer("Prorail ODS"), new InternalDataLayer("Prorail OSM"));
+        super(plugin);
         this.mainDownloader = new ProrailDownloader(this);
         addAction(new OdsDownloadAction(this));
     }
@@ -67,7 +67,19 @@ public class ProrailImportModule extends OdsModule {
     }
 
     @Override
-    public void activate() {
-        super.activate();
+    public boolean activate() {
+        return super.activate();
     }
+
+    @Override
+    protected OpenDataLayerManager createOpenDataLayerManager() {
+        return new OpenDataLayerManager("Prorail ODS");
+    }
+
+    @Override
+    protected OsmLayerManager createOsmLayerManager() {
+        return new OsmLayerManager(this, "Prorail OSM");
+    }
+    
+    
 }

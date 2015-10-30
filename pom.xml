@@ -3,7 +3,7 @@
  <modelVersion>4.0.0</modelVersion>
  <groupId>josm-ods</groupId>
  <artifactId>prorail</artifactId>
- <version>0.6.0-SNAPSHOT</version>
+ <version>0.6.4</version>
  <build>
   <testSourceDirectory>src/main/test/resources</testSourceDirectory>
   <plugins>
@@ -11,8 +11,8 @@
     <artifactId>maven-compiler-plugin</artifactId>
     <version>3.3</version>
     <configuration>
-     <source>1.7</source>
-     <target>1.7</target>
+     <source>1.8</source>
+     <target>1.8</target>
     </configuration>
    </plugin>
   </plugins>
@@ -24,7 +24,12 @@
   <dependency>
    <groupId>josm-ods-arcgis</groupId>
    <artifactId>josm-ods-arcgis</artifactId>
-   <version>0.6.0-SNAPSHOT</version>
+   <version>0.6.4</version>
+  </dependency>
+  <dependency>
+    <groupId>josm-plugins</groupId>
+    <artifactId>opendataservices</artifactId>
+    <version>0.6.4</version>
   </dependency>
  </dependencies>
 </project>

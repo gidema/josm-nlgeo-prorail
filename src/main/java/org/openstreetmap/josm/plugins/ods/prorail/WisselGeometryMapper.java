@@ -21,7 +21,7 @@ public class WisselGeometryMapper extends DefaultGeometryMapper {
   @Override
   public List<OsmPrimitive> createPrimitives(Geometry geometry, Map<String, String> tags, DataSet dataSet) {
     if (geometry instanceof MultiLineString) {
-      List<OsmPrimitive> primitives = new LinkedList<OsmPrimitive>();
+      List<OsmPrimitive> primitives = new LinkedList<>();
       MultiLineString mls = (MultiLineString) geometry;
       for (int i = 0; i < mls.getNumGeometries(); i++) {
         primitives.addAll(createPrimitives((LineString)mls.getGeometryN(i), tags, dataSet));
@@ -34,8 +34,8 @@ public class WisselGeometryMapper extends DefaultGeometryMapper {
   private List<OsmPrimitive> createPrimitives(LineString line, Map<String, String> tags, DataSet dataSet) {
     GeometryFactory geoFactory = line.getFactory();
     LineSegment previousSegment = null;
-    List<LineString> lines = new LinkedList<LineString>();
-    List<Coordinate> coords = new LinkedList<Coordinate>();
+    List<LineString> lines = new LinkedList<>();
+    List<Coordinate> coords = new LinkedList<>();
     for (int i=0; i<line.getNumPoints() - 1; i++) {
       line.getCoordinateN(i);
       LineSegment segment = new LineSegment(line.getCoordinateN(i), line.getCoordinateN(i+1));
@@ -49,7 +49,7 @@ public class WisselGeometryMapper extends DefaultGeometryMapper {
         if (angle > 45) {
           LineString newLine = geoFactory.createLineString(coords.toArray(new Coordinate[0]));
           lines.add(newLine);
-          coords = new LinkedList<Coordinate>();
+          coords = new LinkedList<>();
           coords.add(segment.p0);
           coords.add(segment.p1);
         }
@@ -61,7 +61,7 @@ public class WisselGeometryMapper extends DefaultGeometryMapper {
     }
     LineString newLine = geoFactory.createLineString(coords.toArray(new Coordinate[0]));
     lines.add(newLine);
-    List<OsmPrimitive> primitives = new ArrayList<OsmPrimitive>(lines.size());
+    List<OsmPrimitive> primitives = new ArrayList<>(lines.size());
     for (LineString ls : lines) {
       primitives.add(createPrimitive(ls, tags, dataSet));
     }

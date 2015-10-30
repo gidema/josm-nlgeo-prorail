@@ -18,7 +18,7 @@ public class ODRailStore extends EntityStore<Rail> {
 
     public ODRailStore() {
         super();
-        getIndexes().add(idIndex);
+        addIndex(idIndex);
     }
 
 
