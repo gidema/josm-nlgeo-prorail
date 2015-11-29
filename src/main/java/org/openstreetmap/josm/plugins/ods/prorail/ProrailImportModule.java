@@ -80,6 +80,4 @@ public class ProrailImportModule extends OdsModule {
     protected OsmLayerManager createOsmLayerManager() {
         return new OsmLayerManager(this, "Prorail OSM");
     }
-    
-    
 }

@@ -48,14 +48,14 @@ public class ProrailDownloader extends MainDownloader {
             ProrailGtRailBuilder entityBuilder = new ProrailGtRailBuilder(module.getCrsUtil());
             OdsFeatureSource featureSource = new AGRestFeatureSource(host, "Spoor/36");
             AGRestDataSource dataSource = new AGRestDataSource(featureSource);
-            return new AGRestDownloader(dataSource, module.getCrsUtil(), entityBuilder, null);
+            return new AGRestDownloader(dataSource, module.getCrsUtil(), entityBuilder);
         }
 
         private FeatureDownloader createSwitchDownloader() {
             ProrailGtRailBuilder entityBuilder = new ProrailGtRailBuilder(module.getCrsUtil());
             OdsFeatureSource featureSource = new AGRestFeatureSource(host, "Wisselbeen/37");
             AGRestDataSource dataSource = new AGRestDataSource(featureSource);
-            return new AGRestDownloader(dataSource, module.getCrsUtil(), entityBuilder, null);
+            return new AGRestDownloader(dataSource, module.getCrsUtil(), entityBuilder);
         }
     }
 }
