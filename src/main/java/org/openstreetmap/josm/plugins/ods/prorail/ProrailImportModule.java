@@ -2,7 +2,6 @@ package org.openstreetmap.josm.plugins.ods.prorail;
 
 import org.openstreetmap.josm.data.Bounds;
 import org.openstreetmap.josm.plugins.ods.OdsModule;
-import org.openstreetmap.josm.plugins.ods.OdsModulePlugin;
 import org.openstreetmap.josm.plugins.ods.crs.CRSUtil;
 import org.openstreetmap.josm.plugins.ods.crs.CRSUtilProj4j;
 import org.openstreetmap.josm.plugins.ods.entities.opendata.OpenDataLayerManager;
@@ -17,13 +16,20 @@ public class ProrailImportModule extends OdsModule {
     private final MainDownloader mainDownloader;
     private GeoUtil geoUtil = new GeoUtil();
     private CRSUtil crsUtil = new CRSUtilProj4j();
-    private ODRailStore railStore = new ODRailStore();
 
-    public ProrailImportModule(OdsModulePlugin plugin) {
-        super(plugin);
-        this.mainDownloader = new ProrailDownloader(this);
+    public ProrailImportModule() {
+        super();
+        this.mainDownloader = new ProrailMainDownloader(this);
         addAction(new OdsDownloadAction(this));
     }
+
+    
+    @Override
+    public void initialize() throws Exception {
+        super.initialize();
+        mainDownloader.initialize();
+    }
+
 
     @Override
     public String getName() {
@@ -56,11 +62,6 @@ public class ProrailImportModule extends OdsModule {
         return mainDownloader;
     }
 
-    
-    public ODRailStore getRailStore() {
-        return railStore;
-    }
-
     @Override
     public boolean usePolygonFile() {
         return false;
@@ -73,11 +74,18 @@ public class ProrailImportModule extends OdsModule {
 
     @Override
     protected OpenDataLayerManager createOpenDataLayerManager() {
-        return new OpenDataLayerManager("Prorail ODS");
+        OpenDataLayerManager manager = new OpenDataLayerManager("Prorail ODS");
+        manager.addEntityStore(Rail.class, new ODRailStore());
+        return manager;
     }
 
     @Override
     protected OsmLayerManager createOsmLayerManager() {
         return new OsmLayerManager(this, "Prorail OSM");
+    }
+
+    @Override
+    public Double getTolerance() {
+        return 1e-5;
     }
 }
