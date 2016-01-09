@@ -3,7 +3,7 @@
  <modelVersion>4.0.0</modelVersion>
  <groupId>josm-ods</groupId>
  <artifactId>prorail</artifactId>
- <version>0.6.6</version>
+ <version>0.6.7-snapshot</version>
  <build>
   <testSourceDirectory>src/main/test/resources</testSourceDirectory>
   <plugins>
@@ -24,12 +24,7 @@
   <dependency>
    <groupId>josm-ods-arcgis</groupId>
    <artifactId>josm-ods-arcgis</artifactId>
-   <version>0.6.6</version>
-  </dependency>
-  <dependency>
-    <groupId>josm-plugins</groupId>
-    <artifactId>opendataservices</artifactId>
-    <version>0.6.6</version>
+   <version>0.6.7-snapshot</version>
   </dependency>
  </dependencies>
 </project>
