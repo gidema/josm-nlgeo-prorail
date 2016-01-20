@@ -2,6 +2,7 @@ package org.openstreetmap.josm.plugins.ods.prorail;
 
 import org.openstreetmap.josm.data.Bounds;
 import org.openstreetmap.josm.plugins.ods.OdsModule;
+import org.openstreetmap.josm.plugins.ods.OdsModuleConfiguration;
 import org.openstreetmap.josm.plugins.ods.crs.CRSUtil;
 import org.openstreetmap.josm.plugins.ods.crs.CRSUtilProj4j;
 import org.openstreetmap.josm.plugins.ods.entities.opendata.OpenDataLayerManager;
@@ -11,7 +12,10 @@ import org.openstreetmap.josm.plugins.ods.io.MainDownloader;
 import org.openstreetmap.josm.plugins.ods.jts.GeoUtil;
 import org.openstreetmap.josm.tools.I18n;
 
+import exceptions.OdsException;
+
 public class ProrailImportModule extends OdsModule {
+    private final OdsModuleConfiguration configuration = new ProrailModuleConfiguration();
     private final static Bounds BOUNDS = new Bounds(50.734, 3.206, 53.583, 7.245);
     private final MainDownloader mainDownloader;
     private GeoUtil geoUtil = new GeoUtil();
@@ -23,13 +27,16 @@ public class ProrailImportModule extends OdsModule {
         addAction(new OdsDownloadAction(this));
     }
 
-    
     @Override
-    public void initialize() throws Exception {
+    public void initialize() throws OdsException {
         super.initialize();
         mainDownloader.initialize();
     }
 
+    @Override
+    public OdsModuleConfiguration getConfiguration() {
+        return configuration;
+    }
 
     @Override
     public String getName() {
@@ -65,11 +72,6 @@ public class ProrailImportModule extends OdsModule {
     @Override
     public boolean usePolygonFile() {
         return false;
-    }
-
-    @Override
-    public boolean activate() {
-        return super.activate();
     }
 
     @Override
