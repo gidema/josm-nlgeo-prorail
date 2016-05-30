@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.openstreetmap.josm.data.osm.DataSet;
-import org.openstreetmap.josm.data.osm.OsmPrimitive;
+import org.openstreetmap.josm.plugins.ods.primitives.ManagedPrimitive;
 import org.openstreetmap.josm.plugins.ods.tags.DefaultGeometryMapper;
 
 import com.vividsolutions.jts.geom.Coordinate;
@@ -19,9 +19,9 @@ import com.vividsolutions.jts.geom.MultiLineString;
 public class WisselGeometryMapper extends DefaultGeometryMapper<Rail> {
 
   @Override
-  public List<OsmPrimitive> createPrimitives(Geometry geometry, Map<String, String> tags, DataSet dataSet) {
+  public List<ManagedPrimitive<?>> createPrimitives(Geometry geometry, Map<String, String> tags, DataSet dataSet) {
     if (geometry instanceof MultiLineString) {
-      List<OsmPrimitive> primitives = new LinkedList<>();
+      List<ManagedPrimitive<?>> primitives = new LinkedList<>();
       MultiLineString mls = (MultiLineString) geometry;
       for (int i = 0; i < mls.getNumGeometries(); i++) {
         primitives.addAll(createPrimitives((LineString)mls.getGeometryN(i), tags, dataSet));
@@ -31,7 +31,7 @@ public class WisselGeometryMapper extends DefaultGeometryMapper<Rail> {
     return createPrimitives((LineString)geometry, tags, dataSet);
   }
   
-  private List<OsmPrimitive> createPrimitives(LineString line, Map<String, String> tags, DataSet dataSet) {
+  private List<ManagedPrimitive<?>> createPrimitives(LineString line, Map<String, String> tags, DataSet dataSet) {
     GeometryFactory geoFactory = line.getFactory();
     LineSegment previousSegment = null;
     List<LineString> lines = new LinkedList<>();
@@ -61,7 +61,7 @@ public class WisselGeometryMapper extends DefaultGeometryMapper<Rail> {
     }
     LineString newLine = geoFactory.createLineString(coords.toArray(new Coordinate[0]));
     lines.add(newLine);
-    List<OsmPrimitive> primitives = new ArrayList<>(lines.size());
+    List<ManagedPrimitive<?>> primitives = new ArrayList<>(lines.size());
     for (LineString ls : lines) {
       primitives.add(createPrimitive(ls, tags, dataSet));
     }
