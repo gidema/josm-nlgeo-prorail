@@ -5,7 +5,7 @@ import org.openstreetmap.josm.plugins.ods.OdsModule;
 import org.openstreetmap.josm.plugins.ods.OdsModuleConfiguration;
 import org.openstreetmap.josm.plugins.ods.crs.CRSUtil;
 import org.openstreetmap.josm.plugins.ods.crs.CRSUtilProj4j;
-import org.openstreetmap.josm.plugins.ods.entities.EntityRepository;
+import org.openstreetmap.josm.plugins.ods.entities.Repository;
 import org.openstreetmap.josm.plugins.ods.entities.actual.Barrier;
 import org.openstreetmap.josm.plugins.ods.entities.actual.Entrance;
 import org.openstreetmap.josm.plugins.ods.entities.opendata.OpenDataLayerManager;
@@ -91,14 +91,7 @@ public class ProrailImportModule extends OdsModule {
     @Override
     protected OpenDataLayerManager createOpenDataLayerManager() {
         OpenDataLayerManager manager = new OpenDataLayerManager("Prorail ODS");
-//        manager.addEntityStore(new ProrailEntityStore<>(Rail.class, Entity::getPrimaryId));
-//        manager.addEntityStore(new ProrailEntityStore<>(Switch.class, Entity::getPrimaryId));
-//        manager.addEntityStore(new ProrailEntityStore<>(RailCrossing.class, Entity::getPrimaryId));
-//        manager.addEntityStore(new ProrailEntityStore<>(BufferStop.class, Entity::getPrimaryId));
-//        manager.addEntityStore(new ProrailEntityStore<>(Platform.class, Entity::getPrimaryId));
-//        manager.addEntityStore(new ProrailEntityStore<>(RoadCrossing.class, Entity::getPrimaryId));
-//        manager.addEntityStore(new ProrailEntityStore<>(Barrier.class, Entity::getPrimaryId));
-        EntityRepository repository = manager.getRepository();
+        Repository repository = manager.getRepository();
         repository.register(Rail.class, "primaryId");
         repository.register(Switch.class, "primaryId");
         repository.register(RailCrossing.class, "primaryId");

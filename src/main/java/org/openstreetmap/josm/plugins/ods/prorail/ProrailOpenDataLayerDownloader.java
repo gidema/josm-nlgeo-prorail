@@ -48,16 +48,4 @@ public class ProrailOpenDataLayerDownloader extends OpenDataLayerDownloader {
             dataSource.initialize();
             return dataSource.getOdsFeatureSource().getHost().createDownloader(getModule(), dataSource, clazz);
         }
-        
-        private <T extends Entity> FeatureDownloader createDownloader(OdsDataSource dataSource, Class<T> clazz) throws OdsException {
-//            OdsFeatureSource featureSource = dataSource.getOdsFeatureSource();
-//            String hostName = featureSource.getHost().getName();
-//            String sourceName = hostName + ":" + featureSource.getFeatureName();
-            
-//            OdsDataSource dataSource = getModule().getConfiguration().getDataSource(sourceName);
-            dataSource.initialize();
-            return dataSource.getOdsFeatureSource().getHost().createDownloader(getModule(), dataSource, clazz);
-//            return new AGRestDownloader<>(getModule(), dataSource, clazz);
-        }
-
     }
