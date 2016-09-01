@@ -9,12 +9,12 @@ import org.openstreetmap.josm.plugins.ods.entities.Repository;
 import org.openstreetmap.josm.plugins.ods.entities.actual.Barrier;
 import org.openstreetmap.josm.plugins.ods.entities.actual.Entrance;
 import org.openstreetmap.josm.plugins.ods.entities.opendata.OpenDataLayerManager;
-import org.openstreetmap.josm.plugins.ods.entities.osm.OsmLayerDownloader;
 import org.openstreetmap.josm.plugins.ods.entities.osm.OsmLayerManager;
 import org.openstreetmap.josm.plugins.ods.exceptions.OdsException;
 import org.openstreetmap.josm.plugins.ods.gui.OdsDownloadAction;
 import org.openstreetmap.josm.plugins.ods.io.Host;
 import org.openstreetmap.josm.plugins.ods.io.MainDownloader;
+import org.openstreetmap.josm.plugins.ods.io.OsmLayerDownloader;
 import org.openstreetmap.josm.plugins.ods.jts.GeoUtil;
 import org.openstreetmap.josm.tools.I18n;
 

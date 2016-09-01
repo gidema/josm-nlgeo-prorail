@@ -16,7 +16,7 @@ import com.vividsolutions.jts.geom.LineSegment;
 import com.vividsolutions.jts.geom.LineString;
 import com.vividsolutions.jts.geom.MultiLineString;
 
-public class WisselGeometryMapper extends DefaultGeometryMapper<Rail> {
+public class WisselGeometryMapper extends DefaultGeometryMapper {
 
   @Override
   public List<ManagedPrimitive<?>> createPrimitives(Geometry geometry, Map<String, String> tags, DataSet dataSet) {
