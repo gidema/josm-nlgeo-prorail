@@ -19,19 +19,19 @@ import com.vividsolutions.jts.geom.MultiLineString;
 public class WisselGeometryMapper extends DefaultGeometryMapper {
 
   @Override
-  public List<ManagedPrimitive<?>> createPrimitives(Geometry geometry, Map<String, String> tags, DataSet dataSet) {
+  public List<ManagedPrimitive> createPrimitives(Geometry geometry, Map<String, String> tags, DataSet dataSet) {
     if (geometry instanceof MultiLineString) {
-      List<ManagedPrimitive<?>> primitives = new LinkedList<>();
+      List<ManagedPrimitive> primitives = new LinkedList<>();
       MultiLineString mls = (MultiLineString) geometry;
       for (int i = 0; i < mls.getNumGeometries(); i++) {
-        primitives.addAll(createPrimitives((LineString)mls.getGeometryN(i), tags, dataSet));
+        primitives.addAll(createPrimitives(mls.getGeometryN(i), tags, dataSet));
       }
       return primitives;
     }
-    return createPrimitives((LineString)geometry, tags, dataSet);
+    return createPrimitives(geometry, tags, dataSet);
   }
   
-  private List<ManagedPrimitive<?>> createPrimitives(LineString line, Map<String, String> tags, DataSet dataSet) {
+  private List<ManagedPrimitive> createPrimitives(LineString line, Map<String, String> tags, DataSet dataSet) {
     GeometryFactory geoFactory = line.getFactory();
     LineSegment previousSegment = null;
     List<LineString> lines = new LinkedList<>();
@@ -61,7 +61,7 @@ public class WisselGeometryMapper extends DefaultGeometryMapper {
     }
     LineString newLine = geoFactory.createLineString(coords.toArray(new Coordinate[0]));
     lines.add(newLine);
-    List<ManagedPrimitive<?>> primitives = new ArrayList<>(lines.size());
+    List<ManagedPrimitive> primitives = new ArrayList<>(lines.size());
     for (LineString ls : lines) {
       primitives.add(createPrimitive(ls, tags, dataSet));
     }
