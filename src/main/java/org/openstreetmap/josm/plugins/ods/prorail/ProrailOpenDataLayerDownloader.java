@@ -22,14 +22,14 @@ public class ProrailOpenDataLayerDownloader extends OpenDataLayerDownloader {
         @Override
         public void initialize() throws OdsException {
 //            super.initialize();
-            this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_001:Spooras/34", Rail.class));
-            this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_001:Wissel/35", Switch.class));
-            this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_001:Kruising/36", RailCrossing.class));
-            this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_001:Stootjuk/32", BufferStop.class));
-            this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_001:Perron/20", Platform.class));
-            this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_001:Overweg/29", RoadCrossing.class));
-            this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_001:Scherm/12", Barrier.class));
-            this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_001:Deur/11", Entrance.class));
+            this.addFeatureDownloader(createDownloader("Geleidingssysteem_001:Spooras/3", Rail.class));
+            this.addFeatureDownloader(createDownloader("Geleidingssysteem_001:Wissel/4", Switch.class));
+            this.addFeatureDownloader(createDownloader("Geleidingssysteem_001:Kruising/5", RailCrossing.class));
+            this.addFeatureDownloader(createDownloader("Geleidingssysteem_001:Stootjuk/1", BufferStop.class));
+            this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_003:Perron/17", Platform.class));
+            this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_003:Overweg/20", RoadCrossing.class));
+//            this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_003:Scherm/10", Barrier.class));
+            this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_003:Deur/9", Entrance.class));
             this.primitiveBuilder = new ProrailPrimitiveBuilder(getModule());
         }
 
