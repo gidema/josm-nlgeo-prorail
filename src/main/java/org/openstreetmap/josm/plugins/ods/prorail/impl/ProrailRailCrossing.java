@@ -1,9 +1,9 @@
 package org.openstreetmap.josm.plugins.ods.prorail.impl;
 
-import org.openstreetmap.josm.plugins.ods.prorail.ProrailEntity;
+import org.openstreetmap.josm.plugins.ods.entities.AbstractEntity;
 import org.openstreetmap.josm.plugins.ods.prorail.RailCrossing;
 
-public class ProrailRailCrossing extends ProrailEntity implements RailCrossing {
+public class ProrailRailCrossing extends AbstractEntity implements RailCrossing {
     private String type;
     private String number;
 

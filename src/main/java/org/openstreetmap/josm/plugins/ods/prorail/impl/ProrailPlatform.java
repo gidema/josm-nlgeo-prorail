@@ -1,9 +1,9 @@
 package org.openstreetmap.josm.plugins.ods.prorail.impl;
 
+import org.openstreetmap.josm.plugins.ods.entities.AbstractEntity;
 import org.openstreetmap.josm.plugins.ods.prorail.Platform;
-import org.openstreetmap.josm.plugins.ods.prorail.ProrailEntity;
 
-public class ProrailPlatform extends ProrailEntity implements Platform {
+public class ProrailPlatform extends AbstractEntity implements Platform {
 
     @Override
     public Class<Platform> getBaseType() {

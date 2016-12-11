@@ -1,9 +1,9 @@
 package org.openstreetmap.josm.plugins.ods.prorail.impl;
 
+import org.openstreetmap.josm.plugins.ods.entities.AbstractEntity;
 import org.openstreetmap.josm.plugins.ods.prorail.BufferStop;
-import org.openstreetmap.josm.plugins.ods.prorail.ProrailEntity;
 
-public class ProrailBufferStop extends ProrailEntity implements BufferStop {
+public class ProrailBufferStop extends AbstractEntity implements BufferStop {
 
     @Override
     public Class<BufferStop> getBaseType() {

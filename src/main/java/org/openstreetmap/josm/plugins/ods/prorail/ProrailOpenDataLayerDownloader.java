@@ -1,11 +1,8 @@
 package org.openstreetmap.josm.plugins.ods.prorail;
 
-import java.util.concurrent.ExecutionException;
-
 import org.openstreetmap.josm.plugins.ods.OdsDataSource;
 import org.openstreetmap.josm.plugins.ods.OdsModule;
 import org.openstreetmap.josm.plugins.ods.entities.Entity;
-import org.openstreetmap.josm.plugins.ods.entities.actual.Barrier;
 import org.openstreetmap.josm.plugins.ods.entities.actual.Entrance;
 import org.openstreetmap.josm.plugins.ods.entities.opendata.FeatureDownloader;
 import org.openstreetmap.josm.plugins.ods.entities.opendata.OpenDataLayerDownloader;
@@ -34,7 +31,7 @@ public class ProrailOpenDataLayerDownloader extends OpenDataLayerDownloader {
         }
 
         @Override
-        public void process() throws ExecutionException {
+        public void process() throws OdsException {
 //            try {
                 super.process();
                 primitiveBuilder.run(getResponse());
