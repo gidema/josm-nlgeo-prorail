@@ -3,6 +3,7 @@ package org.openstreetmap.josm.plugins.ods.prorail;
 import org.openstreetmap.josm.plugins.ods.OdsDataSource;
 import org.openstreetmap.josm.plugins.ods.OdsModule;
 import org.openstreetmap.josm.plugins.ods.entities.Entity;
+import org.openstreetmap.josm.plugins.ods.entities.actual.Barrier;
 import org.openstreetmap.josm.plugins.ods.entities.actual.Entrance;
 import org.openstreetmap.josm.plugins.ods.entities.opendata.FeatureDownloader;
 import org.openstreetmap.josm.plugins.ods.entities.opendata.OpenDataLayerDownloader;
@@ -25,7 +26,7 @@ public class ProrailOpenDataLayerDownloader extends OpenDataLayerDownloader {
             this.addFeatureDownloader(createDownloader("Geleidingssysteem_001:Stootjuk/1", BufferStop.class));
             this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_003:Perron/17", Platform.class));
             this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_003:Overweg/20", RoadCrossing.class));
-//            this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_003:Scherm/10", Barrier.class));
+            this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_003:Scherm/10", Barrier.class));
             this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_003:Deur/9", Entrance.class));
             this.primitiveBuilder = new ProrailPrimitiveBuilder(getModule());
         }

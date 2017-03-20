@@ -21,7 +21,7 @@ public class ProrailModuleConfiguration extends AbstractModuleConfiguration {
         addHost(host);
         OdsFeatureSource perronSource = new AGRestFeatureSource(host, "Perron/17");
         OdsFeatureSource overwegPuntSource = new AGRestFeatureSource(host, "Overweg/20");
-//        OdsFeatureSource schermSource = new AGRestFeatureSource(host, "Scherm/10");
+        OdsFeatureSource schermSource = new AGRestFeatureSource(host, "Scherm/10");
         OdsFeatureSource deurSource = new AGRestFeatureSource(host, "Deur/9");
 
         EntityMapperFactory entityMapperFactory = new ProrailEntityMapperFactory();
@@ -31,7 +31,7 @@ public class ProrailModuleConfiguration extends AbstractModuleConfiguration {
         addDataSource(new DefaultOdsDataSource(stootjukSource, null, entityMapperFactory));
         addDataSource(new DefaultOdsDataSource(perronSource, null, entityMapperFactory));
         addDataSource(new DefaultOdsDataSource(overwegPuntSource, null, entityMapperFactory));
-//        addDataSource(new DefaultOdsDataSource(schermSource, null, entityMapperFactory));
+        addDataSource(new DefaultOdsDataSource(schermSource, null, entityMapperFactory));
         addDataSource(new DefaultOdsDataSource(deurSource, null, entityMapperFactory));
     }
 }

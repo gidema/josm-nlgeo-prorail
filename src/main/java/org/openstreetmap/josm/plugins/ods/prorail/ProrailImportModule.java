@@ -1,5 +1,8 @@
 package org.openstreetmap.josm.plugins.ods.prorail;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.openstreetmap.josm.data.Bounds;
 import org.openstreetmap.josm.plugins.ods.OdsModule;
 import org.openstreetmap.josm.plugins.ods.OdsModuleConfiguration;
@@ -16,6 +19,7 @@ import org.openstreetmap.josm.plugins.ods.io.Host;
 import org.openstreetmap.josm.plugins.ods.io.MainDownloader;
 import org.openstreetmap.josm.plugins.ods.io.OsmLayerDownloader;
 import org.openstreetmap.josm.plugins.ods.jts.GeoUtil;
+import org.openstreetmap.josm.plugins.ods.update.EntityUpdater;
 import org.openstreetmap.josm.tools.I18n;
 
 public class ProrailImportModule extends OdsModule {
@@ -111,5 +115,10 @@ public class ProrailImportModule extends OdsModule {
     @Override
     public Double getTolerance() {
         return 1e-5;
+    }
+
+    @Override
+    public List<EntityUpdater> getUpdaters() {
+        return Collections.emptyList();
     }
 }
