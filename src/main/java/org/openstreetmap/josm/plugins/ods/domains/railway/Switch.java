@@ -1,4 +1,4 @@
-package org.openstreetmap.josm.plugins.ods.prorail;
+package org.openstreetmap.josm.plugins.ods.domains.railway;
 
 import org.openstreetmap.josm.data.osm.OsmPrimitive;
 import org.openstreetmap.josm.plugins.ods.entities.Entity;

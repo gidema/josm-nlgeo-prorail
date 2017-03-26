@@ -1,9 +1,9 @@
-package org.openstreetmap.josm.plugins.ods.prorail;
+package org.openstreetmap.josm.plugins.ods.domains.railway;
 
 import org.openstreetmap.josm.data.osm.OsmPrimitive;
 import org.openstreetmap.josm.plugins.ods.entities.Entity;
 
-public interface BufferStop extends Entity {
+public interface RoadCrossing extends Entity {
     public static boolean recognize(OsmPrimitive primitive) {
         String railway = primitive.get("railway");
         return ("buffer_stop".equals(railway)

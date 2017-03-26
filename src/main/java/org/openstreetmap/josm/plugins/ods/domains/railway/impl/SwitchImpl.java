@@ -1,9 +1,9 @@
-package org.openstreetmap.josm.plugins.ods.prorail.impl;
+package org.openstreetmap.josm.plugins.ods.domains.railway.impl;
 
+import org.openstreetmap.josm.plugins.ods.domains.railway.Switch;
 import org.openstreetmap.josm.plugins.ods.entities.AbstractEntity;
-import org.openstreetmap.josm.plugins.ods.prorail.Switch;
 
-public class ProrailSwitch extends AbstractEntity implements Switch {
+public class SwitchImpl extends AbstractEntity implements Switch {
     private String type;
     private String number;
 
