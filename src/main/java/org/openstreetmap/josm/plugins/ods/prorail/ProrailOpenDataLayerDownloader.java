@@ -26,7 +26,6 @@ public class ProrailOpenDataLayerDownloader extends OpenDataLayerDownloader {
 
         public ProrailOpenDataLayerDownloader(OdsModule module) {
             super(module);
-            this.primitiveBuilder = new ProrailPrimitiveBuilder(getModule());
         }
 
         @Override
@@ -39,6 +38,7 @@ public class ProrailOpenDataLayerDownloader extends OpenDataLayerDownloader {
             this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_003:Overweg/20", RoadCrossing.class));
             this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_003:Scherm/10", Barrier.class));
             this.addFeatureDownloader(createDownloader("BBK_spoorobjecten_003:Deur/9", Entrance.class));
+            this.primitiveBuilder = new ProrailPrimitiveBuilder(getModule());
         }
 
         private <T extends Entity> FeatureDownloader createDownloader(String sourceName, Class<T> clazz) throws OdsException {
