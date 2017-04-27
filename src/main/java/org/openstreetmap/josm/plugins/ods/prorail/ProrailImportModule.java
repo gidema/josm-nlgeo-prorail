@@ -16,7 +16,6 @@ import org.openstreetmap.josm.plugins.ods.domains.railway.Rail;
 import org.openstreetmap.josm.plugins.ods.domains.railway.RailCrossing;
 import org.openstreetmap.josm.plugins.ods.domains.railway.RoadCrossing;
 import org.openstreetmap.josm.plugins.ods.domains.railway.Switch;
-import org.openstreetmap.josm.plugins.ods.entities.Repository;
 import org.openstreetmap.josm.plugins.ods.entities.opendata.OpenDataLayerManager;
 import org.openstreetmap.josm.plugins.ods.entities.osm.OsmLayerManager;
 import org.openstreetmap.josm.plugins.ods.exceptions.OdsException;
@@ -25,6 +24,7 @@ import org.openstreetmap.josm.plugins.ods.io.Host;
 import org.openstreetmap.josm.plugins.ods.io.MainDownloader;
 import org.openstreetmap.josm.plugins.ods.io.OsmLayerDownloader;
 import org.openstreetmap.josm.plugins.ods.jts.GeoUtil;
+import org.openstreetmap.josm.plugins.ods.storage.Repository;
 import org.openstreetmap.josm.plugins.ods.update.EntityUpdater;
 import org.openstreetmap.josm.tools.I18n;
 
@@ -32,8 +32,8 @@ public class ProrailImportModule extends OdsModule {
     private final OdsModuleConfiguration configuration;
     private final static Bounds BOUNDS = new Bounds(50.734, 3.206, 53.583, 7.245);
     private final MainDownloader mainDownloader;
-    private GeoUtil geoUtil = new GeoUtil();
-    private CRSUtil crsUtil = new CRSUtilProj4j();
+    private final GeoUtil geoUtil = new GeoUtil();
+    private final CRSUtil crsUtil = new CRSUtilProj4j();
 
     public ProrailImportModule() {
         super();
