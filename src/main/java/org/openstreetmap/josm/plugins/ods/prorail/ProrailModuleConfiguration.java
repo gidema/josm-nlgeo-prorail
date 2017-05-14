@@ -1,11 +1,16 @@
 package org.openstreetmap.josm.plugins.ods.prorail;
 
+import java.util.Collections;
+import java.util.List;
+
 import org.openstreetmap.josm.plugins.ods.AbstractModuleConfiguration;
 import org.openstreetmap.josm.plugins.ods.DefaultOdsDataSource;
 import org.openstreetmap.josm.plugins.ods.OdsFeatureSource;
 import org.openstreetmap.josm.plugins.ods.arcgis.rest.AGRestFeatureSource;
 import org.openstreetmap.josm.plugins.ods.arcgis.rest.AGRestHost;
 import org.openstreetmap.josm.plugins.ods.entities.EntityMapperFactory;
+import org.openstreetmap.josm.plugins.ods.entities.osm.OsmEntityBuilder;
+import org.openstreetmap.josm.plugins.ods.processing.OsmEntityRelationManager;
 import org.openstreetmap.josm.plugins.ods.prorail.gt.build.ProrailEntityMapperFactory;
 
 public class ProrailModuleConfiguration extends AbstractModuleConfiguration {
@@ -34,4 +39,19 @@ public class ProrailModuleConfiguration extends AbstractModuleConfiguration {
         addDataSource(new DefaultOdsDataSource(schermSource, null, entityMapperFactory));
         addDataSource(new DefaultOdsDataSource(deurSource, null, entityMapperFactory));
     }
+
+    @Override
+    public List<Class<? extends OsmEntityBuilder>> getOsmEntityBuilders() {
+        // Building of entities from the OSM layer is currently
+        // not supported for this module
+        return Collections.emptyList();
+    }
+
+    @Override
+    public List<Class<? extends OsmEntityRelationManager>> getOsmRelationManagers() {
+        // Relations between entities are currently not supported for this module.
+        return Collections.emptyList();
+    }
+
+
 }
