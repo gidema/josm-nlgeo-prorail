@@ -1,7 +1,6 @@
 package org.openstreetmap.josm.plugins.ods.prorail.parsing;
 
 import org.opengis.feature.simple.SimpleFeature;
-import org.openstreetmap.josm.plugins.ods.crs.CRSUtil;
 import org.openstreetmap.josm.plugins.ods.domains.railway.RoadCrossing;
 import org.openstreetmap.josm.plugins.ods.domains.railway.impl.RoadCrossingImpl;
 import org.openstreetmap.josm.plugins.ods.entities.opendata.FeatureUtil;
@@ -13,8 +12,7 @@ import com.vividsolutions.jts.geom.Geometry;
 public class ProrailOverwegPuntParser extends ProrailFeatureParser {
     public final OdEntityStore<RoadCrossing, Long> store;
 
-    public ProrailOverwegPuntParser(CRSUtil crsUtil, OdEntityStore<RoadCrossing, Long> store) {
-        super(crsUtil);
+    public ProrailOverwegPuntParser(OdEntityStore<RoadCrossing, Long> store) {
         this.store = store;
     }
 

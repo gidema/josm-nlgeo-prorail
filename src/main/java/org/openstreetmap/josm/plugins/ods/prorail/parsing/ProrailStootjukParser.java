@@ -1,7 +1,6 @@
 package org.openstreetmap.josm.plugins.ods.prorail.parsing;
 
 import org.opengis.feature.simple.SimpleFeature;
-import org.openstreetmap.josm.plugins.ods.crs.CRSUtil;
 import org.openstreetmap.josm.plugins.ods.domains.railway.BufferStop;
 import org.openstreetmap.josm.plugins.ods.domains.railway.impl.BufferStopImpl;
 import org.openstreetmap.josm.plugins.ods.entities.opendata.FeatureUtil;
@@ -13,8 +12,8 @@ import com.vividsolutions.jts.geom.Geometry;
 public class ProrailStootjukParser extends ProrailFeatureParser {
     public final OdEntityStore<BufferStop, Long> store;
 
-    public ProrailStootjukParser(CRSUtil crsUtil, OdEntityStore<BufferStop, Long> store) {
-        super(crsUtil);
+    public ProrailStootjukParser(OdEntityStore<BufferStop, Long> store) {
+        super();
         this.store = store;
     }
 

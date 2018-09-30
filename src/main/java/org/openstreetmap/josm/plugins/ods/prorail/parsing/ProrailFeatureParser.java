@@ -13,11 +13,9 @@ import org.openstreetmap.josm.plugins.ods.parsing.FeatureParser;
 import com.vividsolutions.jts.geom.Geometry;
 
 public abstract class ProrailFeatureParser implements FeatureParser {
-    private final CRSUtil crsUtil;
 
-    public ProrailFeatureParser(CRSUtil crsUtil) {
+    public ProrailFeatureParser() {
         super();
-        this.crsUtil = crsUtil;
     }
 
     @Override
@@ -45,6 +43,7 @@ public abstract class ProrailFeatureParser implements FeatureParser {
             CoordinateReferenceSystem crs = feature.getType()
                     .getCoordinateReferenceSystem();
             Geometry gtGeometry = getGeometry(feature);
+            CRSUtil crsUtil = CRSUtil.getInstance();
             entity.setGeometry(crsUtil.toOsm(gtGeometry, crs));
         } catch (CRSException e) {
             // TODO Auto-generated catch block

@@ -10,8 +10,6 @@ import org.openstreetmap.josm.plugins.ods.arcgis.rest.config.DLConfig;
 import org.openstreetmap.josm.plugins.ods.arcgis.rest.config.DSConfig;
 import org.openstreetmap.josm.plugins.ods.arcgis.rest.config.FSConfig;
 import org.openstreetmap.josm.plugins.ods.arcgis.rest.config.HostConfig;
-import org.openstreetmap.josm.plugins.ods.crs.CRSUtil;
-import org.openstreetmap.josm.plugins.ods.crs.CRSUtilProj4j;
 import org.openstreetmap.josm.plugins.ods.entities.EntityPrimitiveBuilder;
 import org.openstreetmap.josm.plugins.ods.entities.opendata.OdLayerManager;
 import org.openstreetmap.josm.plugins.ods.prorail.ProrailModuleSetup.EntityStores;
@@ -30,20 +28,12 @@ import org.openstreetmap.josm.plugins.ods.prorail.parsing.ProrailWisselParser;
 
 public class ProrailAGRestSetup extends AGRestConfig {
     private static final String URL = "http://mapservices.prorail.nl/ArcGIS/rest/services";
-    final CRSUtil crsUtil;
-    // private final GeoUtil geoUtil;
-    //    private final EntityStores stores;
-    //    private final OdLayerManager odLayerManager;
-    //    private OpenDataLayerDownloader downloader;
-    //    private final OdBoundaryManager boundaryManager;
 
     private final List<DLConfig> downloaders;
     private final List<EntityPrimitiveBuilder<?>> primitiveBuilders;
 
     public ProrailAGRestSetup(OdLayerManager odLayerManager, EntityStores stores) {
         super();
-        this.crsUtil = new CRSUtilProj4j();
-        //        this.geoUtil = new GeoUtil();
 
         // Host
         HostConfig geleidingssysteemHost = new HostConfig(URL, "Geleidingssysteem_004", FeatureServer);
@@ -74,12 +64,12 @@ public class ProrailAGRestSetup extends AGRestConfig {
                 Arrays.asList("ID", "STATUS"));
 
         // Parsers
-        ProrailSpoortakParser spoortakParser = new ProrailSpoortakParser(crsUtil, stores.rail);
-        ProrailWisselParser wisselParser = new ProrailWisselParser(crsUtil, stores.switch_);
-        ProrailKruisingParser kruisingParser = new ProrailKruisingParser(crsUtil, stores.railCrossing);
-        ProrailStootjukParser stootjukParser = new ProrailStootjukParser(crsUtil, stores.bufferStop);
-        ProrailOverwegPuntParser overwegpuntParser = new ProrailOverwegPuntParser(crsUtil, stores.roadCrossing);
-        ProrailPerronParser perronParser = new ProrailPerronParser(crsUtil, stores.platform);
+        ProrailSpoortakParser spoortakParser = new ProrailSpoortakParser(stores.rail);
+        ProrailWisselParser wisselParser = new ProrailWisselParser(stores.switch_);
+        ProrailKruisingParser kruisingParser = new ProrailKruisingParser(stores.railCrossing);
+        ProrailStootjukParser stootjukParser = new ProrailStootjukParser(stores.bufferStop);
+        ProrailOverwegPuntParser overwegpuntParser = new ProrailOverwegPuntParser(stores.roadCrossing);
+        ProrailPerronParser perronParser = new ProrailPerronParser(stores.platform);
 
         // Downloaders
         DLConfig spoortakDL = new DLConfig(spoortakDS, spoortakParser);

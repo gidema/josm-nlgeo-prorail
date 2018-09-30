@@ -1,7 +1,6 @@
 package org.openstreetmap.josm.plugins.ods.prorail.parsing;
 
 import org.opengis.feature.simple.SimpleFeature;
-import org.openstreetmap.josm.plugins.ods.crs.CRSUtil;
 import org.openstreetmap.josm.plugins.ods.domains.railway.Switch;
 import org.openstreetmap.josm.plugins.ods.domains.railway.impl.SwitchImpl;
 import org.openstreetmap.josm.plugins.ods.entities.opendata.FeatureUtil;
@@ -13,8 +12,8 @@ import com.vividsolutions.jts.geom.Geometry;
 public class ProrailWisselParser extends ProrailFeatureParser {
     public final OdEntityStore<Switch, Long> store;
 
-    public ProrailWisselParser(CRSUtil crsUtil, OdEntityStore<Switch, Long> store) {
-        super(crsUtil);
+    public ProrailWisselParser(OdEntityStore<Switch, Long> store) {
+        super();
         this.store = store;
     }
 

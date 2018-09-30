@@ -1,7 +1,6 @@
 package org.openstreetmap.josm.plugins.ods.prorail.parsing;
 
 import org.opengis.feature.simple.SimpleFeature;
-import org.openstreetmap.josm.plugins.ods.crs.CRSUtil;
 import org.openstreetmap.josm.plugins.ods.domains.railway.Rail;
 import org.openstreetmap.josm.plugins.ods.domains.railway.impl.RailImpl;
 import org.openstreetmap.josm.plugins.ods.entities.opendata.FeatureUtil;
@@ -13,8 +12,8 @@ import com.vividsolutions.jts.geom.Geometry;
 public class ProrailSpoortakParser extends ProrailFeatureParser {
     public final OdEntityStore<Rail, Long> store;
 
-    public ProrailSpoortakParser(CRSUtil crsUtil, OdEntityStore<Rail, Long> store) {
-        super(crsUtil);
+    public ProrailSpoortakParser(OdEntityStore<Rail, Long> store) {
+        super();
         this.store = store;
     }
 

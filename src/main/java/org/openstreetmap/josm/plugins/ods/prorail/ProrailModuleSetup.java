@@ -8,8 +8,6 @@ import java.util.List;
 
 import org.openstreetmap.josm.plugins.ods.arcgis.rest.AGRestInitializer;
 import org.openstreetmap.josm.plugins.ods.arcgis.rest.config.AGRestConfig;
-import org.openstreetmap.josm.plugins.ods.crs.CRSUtil;
-import org.openstreetmap.josm.plugins.ods.crs.CRSUtilProj4j;
 import org.openstreetmap.josm.plugins.ods.domains.railway.BufferStop;
 import org.openstreetmap.josm.plugins.ods.domains.railway.Platform;
 import org.openstreetmap.josm.plugins.ods.domains.railway.Rail;
@@ -35,7 +33,6 @@ public class ProrailModuleSetup implements ModuleSetup {
     private final OsmSetup osmSetup;
     private MainDownloader mainDownloader;
     private final AGRestConfig agRestConfig;
-    private final CRSUtil crsUtil = new CRSUtilProj4j();
     private OpenDataLayerDownloader odLayerDownloader;
 
     public ProrailModuleSetup() {
@@ -50,7 +47,7 @@ public class ProrailModuleSetup implements ModuleSetup {
     private void setup() {
         AGRestInitializer initializer = new AGRestInitializer();
         try {
-            initializer.initialize(agRestConfig, crsUtil);
+            initializer.initialize(agRestConfig);
             List<Runnable> processors = new ArrayList<>(6);
             processors.addAll(agRestConfig.getPrimitiveBuilders());
             OdBoundaryManager boundaryManager = new OdBoundaryManager(entityStores.odEntityStores());
