@@ -1,12 +1,16 @@
 package org.openstreetmap.josm.plugins.ods.domains.railway.impl;
 
 import org.openstreetmap.josm.plugins.ods.domains.railway.BufferStop;
-import org.openstreetmap.josm.plugins.ods.entities.AbstractEntity;
 
-public class BufferStopImpl extends AbstractEntity implements BufferStop {
+public class BufferStopImpl extends AbstractProrailEntity implements BufferStop {
+    private String number;
 
     @Override
-    public Class<BufferStop> getBaseType() {
-        return BufferStop.class;
+    public String getNumber() {
+        return number;
+    }
+
+    public void setNumber(String number) {
+        this.number = number;
     }
 }

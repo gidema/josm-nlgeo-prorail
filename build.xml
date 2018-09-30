@@ -6,7 +6,7 @@
 	<!-- enter the SVN commit message -->
   <property name="commit.message" value="Commit message" />
   <!-- enter the *lowest* JOSM version this plugin is currently compatible with -->
-  <property name="plugin.main.version" value="11223" />
+  <property name="plugin.main.version" value="14026" />
   <property name="plugin.class" value="org.openstreetmap.josm.plugins.ods.prorail.ProrailImportPlugin"/>
   <property name="plugin.version" value="${mypom.version}" />
 	<property name="plugin.build.dir" value="build" />
@@ -46,7 +46,7 @@
         <!--<attribute name="Plugin-Link" value="http://fixme.com"/>-->
         <attribute name="Plugin-Mainversion" value="${plugin.main.version}"/>
         <attribute name="Plugin-Version" value="${plugin.version}"/>
-        <attribute name="Plugin-Requires" value="opendataservices"/>
+        <attribute name="Plugin-Requires" value="ods-arcgis"/>
         <attribute name="Plugin-Stage" value="45"/>
       </manifest>
 		</jar>
@@ -82,7 +82,7 @@
    -->
    <target name="install4debug" depends="dist">
      <property environment="env"/>
-     <condition property="josm.plugins.dir" value="${env.APPDATA}/JOSM_ECLIPSE/plugins" else="${user.home}/.josm_eclipse/plugins">
+     <condition property="josm.plugins.dir" value="${env.APPDATA}/JOSM_ECLIPSE_ODS6/plugins" else="${user.home}/.josm_eclipse_ods6/plugins">
        <and>
          <os family="windows"/>
        </and>

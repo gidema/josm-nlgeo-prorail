@@ -1,13 +1,12 @@
 package org.openstreetmap.josm.plugins.ods.domains.railway.impl;
 
 import org.openstreetmap.josm.plugins.ods.domains.railway.Switch;
-import org.openstreetmap.josm.plugins.ods.entities.AbstractEntity;
 
-public class SwitchImpl extends AbstractEntity implements Switch {
+public class SwitchImpl extends AbstractProrailEntity implements Switch {
     private String type;
     private String number;
 
-    
+
     @Override
     public String getNumber() {
         return number;
@@ -26,10 +25,5 @@ public class SwitchImpl extends AbstractEntity implements Switch {
     @Override
     public void setType(String type) {
         this.type = type;
-    }
-
-    @Override
-    public Class<Switch> getBaseType() {
-        return Switch.class;
     }
 }

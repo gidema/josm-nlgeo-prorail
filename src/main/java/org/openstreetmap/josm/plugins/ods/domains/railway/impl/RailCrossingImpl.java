@@ -1,13 +1,12 @@
 package org.openstreetmap.josm.plugins.ods.domains.railway.impl;
 
 import org.openstreetmap.josm.plugins.ods.domains.railway.RailCrossing;
-import org.openstreetmap.josm.plugins.ods.entities.AbstractEntity;
 
-public class RailCrossingImpl extends AbstractEntity implements RailCrossing{
+public class RailCrossingImpl extends AbstractProrailEntity implements RailCrossing{
     private String type;
     private String number;
 
-    
+
     @Override
     public String getNumber() {
         return number;
@@ -26,10 +25,5 @@ public class RailCrossingImpl extends AbstractEntity implements RailCrossing{
     @Override
     public void setType(String type) {
         this.type = type;
-    }
-
-    @Override
-    public Class<RailCrossing> getBaseType() {
-        return RailCrossing.class;
     }
 }
