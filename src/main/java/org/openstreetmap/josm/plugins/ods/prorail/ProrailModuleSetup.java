@@ -22,6 +22,7 @@ import org.openstreetmap.josm.plugins.ods.entities.storage.OdEntityStore;
 import org.openstreetmap.josm.plugins.ods.entities.storage.SimpleOdEntityStore;
 import org.openstreetmap.josm.plugins.ods.io.MainDownloader;
 import org.openstreetmap.josm.plugins.ods.io.OsmLayerDownloader;
+import org.openstreetmap.josm.plugins.ods.prorail.processing.RailAligner;
 import org.openstreetmap.josm.plugins.ods.setup.ModuleSetup;
 import org.openstreetmap.josm.plugins.ods.setup.OsmSetup;
 import org.openstreetmap.josm.plugins.ods.setup.SimpleOsmSetup;
@@ -50,6 +51,7 @@ public class ProrailModuleSetup implements ModuleSetup {
             initializer.initialize(agRestConfig);
             List<Runnable> processors = new ArrayList<>(6);
             processors.addAll(agRestConfig.getPrimitiveBuilders());
+            processors.add(new RailAligner(odLayerManager));
             OdBoundaryManager boundaryManager = new OdBoundaryManager(entityStores.odEntityStores());
             this.odLayerDownloader = new OpenDataLayerDownloader(
                     odLayerManager, initializer.getDownloaders(), processors, boundaryManager);

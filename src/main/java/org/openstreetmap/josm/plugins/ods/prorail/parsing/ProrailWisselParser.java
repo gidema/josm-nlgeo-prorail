@@ -19,12 +19,13 @@ public class ProrailWisselParser extends ProrailFeatureParser {
 
     @Override
     public void parse(SimpleFeature feature, DownloadResponse response) {
-        String type = FeatureUtil.getString(feature, "TYPE");
         SwitchImpl sw = new SwitchImpl();
         super.parse(feature, sw, response);
         sw.setId(FeatureUtil.getLong(feature, "ID"));
         sw.setSource("Prorail");
         sw.setGeometry((Geometry) feature.getDefaultGeometry());
+        sw.setType(FeatureUtil.getString(feature, "TYPE"));
+        sw.setNumber(FeatureUtil.getString(feature, "NR"));
         store.add(sw);
     }
 

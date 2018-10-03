@@ -19,6 +19,7 @@ public class ProrailKruisingParser extends ProrailFeatureParser {
         RailCrossingImpl crossing = new RailCrossingImpl();
         super.parse(feature, crossing, response);
         crossing.setId(FeatureUtil.getLong(feature, "ID"));
+        crossing.setNumber(FeatureUtil.getString(feature, "KRUISINGNUMMER"));
         store.add(crossing);
     }
 
